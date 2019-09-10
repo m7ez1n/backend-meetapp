@@ -3,7 +3,7 @@ import { promisify } from 'util';
 
 import authConfig from '../../config/auth';
 
-export default async (res, req, next) => {
+export default async (req, res, next) => {
   const header = req.headers.authorization;
 
   if (!header) {
