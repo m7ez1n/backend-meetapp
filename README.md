@@ -26,7 +26,7 @@ Para atualizar a senha, o usuário deve também enviar um campo de confirmação
 
 ### Gerenciamento de arquivos :books:
 
-- [ ] Crie uma rota para upload de arquivos que cadastra em uma tabela o caminho e nome do arquivo e retorna todos dados do arquivo cadastrado.
+- [X] Crie uma rota para upload de arquivos que cadastra em uma tabela o caminho e nome do arquivo e retorna todos dados do arquivo cadastrado.
 
 ### Gerenciamento de meetups :file_folder:
 
