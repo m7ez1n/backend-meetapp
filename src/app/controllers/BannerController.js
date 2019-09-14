@@ -2,7 +2,7 @@ import Banner from '../models/Banner';
 
 class BannerController {
   async store(req, res) {
-    const { originalname: name, filename: path } = req.banner;
+    const { originalname: name, filename: path } = req.file;
 
     const banner = await Banner.create({
       name,
