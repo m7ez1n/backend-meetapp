@@ -1,8 +1,37 @@
 import * as Yup from 'yup';
 import { isBefore, parseISO, startOfHour } from 'date-fns';
 import Meetup from '../models/Meetup';
+import Banner from '../models/Banner';
 
 class MeetupController {
+  async index(req, res) {
+    const { page = 1 } = req.query;
+
+    const meetapp = await Meetup.findAll({
+      where: { creator_id: req.userId },
+      order: ['date'],
+      limit: 10,
+      offset: (page - 1) * 10,
+      attributes: [
+        'id',
+        'title',
+        'description',
+        'location',
+        'date',
+        'creator_id',
+      ],
+      include: [
+        {
+          model: Banner,
+          as: 'banner',
+          attributes: ['id', 'path', 'url'],
+        },
+      ],
+    });
+
+    return res.json(meetapp);
+  }
+
   async store(req, res) {
     const validation = Yup.object().shape({
       title: Yup.string().required(),
