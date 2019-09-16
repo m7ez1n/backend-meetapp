@@ -9,6 +9,7 @@ class MeetupController {
       description: Yup.string().required(),
       location: Yup.string().required(),
       date: Yup.date().required(),
+      banner_id: Yup.number().required(),
     });
 
     if (!(await validation.isValid(req.body))) {
@@ -38,6 +39,60 @@ class MeetupController {
     });
 
     return res.json(meetup);
+  }
+
+  async update(req, res) {
+    const validation = Yup.object().shape({
+      title: Yup.string(),
+      description: Yup.string(),
+      location: Yup.string(),
+      date: Yup.date(),
+      banner_id: Yup.number(),
+    });
+
+    if (!(await validation.isValid(req.body))) {
+      return res.status(400).json({ error: 'Erro na validação' });
+    }
+
+    const meetup = await Meetup.findByPk(req.params.id);
+
+    /**
+     * Conferindo se o meetup para editar é do usuário logado
+     */
+    if (req.userId !== meetup.creator_id) {
+      return res.status(400).json({
+        error: 'Só criadores podem editar seus meetups',
+      });
+    }
+
+    /**
+     * Conferindo se a data do meetup já passou
+     */
+    if (isBefore(parseISO(meetup.date), new Date())) {
+      return res.status(400).json({
+        error: 'Só é possível editar meetups em datas que ainda não passaram',
+      });
+    }
+
+    const {
+      id,
+      creator_id,
+      title,
+      description,
+      location,
+      date,
+      banner_id,
+    } = await meetup.update(req.body);
+
+    return res.json({
+      id,
+      creator_id,
+      title,
+      description,
+      location,
+      date,
+      banner_id,
+    });
   }
 }
 
