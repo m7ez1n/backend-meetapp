@@ -68,7 +68,8 @@ class MeetupController {
     /**
      * Conferindo se a data do meetup já passou
      */
-    if (isBefore(parseISO(meetup.date), new Date())) {
+    const meetupDate = startOfHour(meetup.date);
+    if (isBefore(meetupDate, new Date())) {
       return res.status(400).json({
         error: 'Só é possível editar meetups em datas que ainda não passaram',
       });
