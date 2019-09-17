@@ -30,15 +30,15 @@ Para atualizar a senha, o usuário deve também enviar um campo de confirmação
 
 ### Gerenciamento de meetups :file_folder:
 
-- [ ] O usuário pode cadastrar meetups na plataforma com título do meetup, descrição, localização, data e hora e imagem (banner). Todos campos são obrigatórios. Adicione também um campo user_id que armazena o ID do usuário que organiza o evento.
+- [X] O usuário pode cadastrar meetups na plataforma com título do meetup, descrição, localização, data e hora e imagem (banner). Todos campos são obrigatórios. Adicione também um campo user_id que armazena o ID do usuário que organiza o evento.
 
-- [ ] Não deve ser possível cadastrar meetups com datas que já passaram.
+- [X] Não deve ser possível cadastrar meetups com datas que já passaram.
 
-- [ ] O usuário também deve poder editar todos dados de meetups que ainda não aconteceram e que ele é organizador.
+- [X] O usuário também deve poder editar todos dados de meetups que ainda não aconteceram e que ele é organizador.
 
-- [ ] Crie uma rota para listar os meetups que são organizados pelo usuário logado.
+- [X] Crie uma rota para listar os meetups que são organizados pelo usuário logado.
 
-- [ ] O usuário deve poder cancelar meetups organizados por ele e que ainda não aconteceram. O cancelamento deve deletar o meetup da base de dados.
+- [X] O usuário deve poder cancelar meetups organizados por ele e que ainda não aconteceram. O cancelamento deve deletar o meetup da base de dados.
 
 ### Inscrição no meetup :pushpin:
 
