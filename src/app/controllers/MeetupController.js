@@ -124,6 +124,32 @@ class MeetupController {
       banner_id,
     });
   }
+
+  async destroy(req, res) {
+    const meetup = await Meetup.findByPk(req.params.id);
+
+    /**
+     * Conferindo se o meetup para editar é do usuário logado
+     */
+    if (req.userId !== meetup.creator_id) {
+      return res.status(400).json({
+        error: 'Só criadores podem excluir seus meetups',
+      });
+    }
+
+    /**
+     * Conferindo se a data já passou
+     */
+    if (isBefore(startOfHour(meetup.date), new Date())) {
+      return res.status(400).json({
+        error: 'Só é possível excluir meetups em datas que ainda não passaram',
+      });
+    }
+
+    await meetup.destroy();
+
+    return res.json({ message: `Seu meetup, (${meetup.title}) foi deletado` });
+  }
 }
 
 export default new MeetupController();
