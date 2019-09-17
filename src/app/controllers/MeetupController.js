@@ -45,7 +45,7 @@ class MeetupController {
       return res.status(400).json({ error: 'Erro na validação' });
     }
 
-    const { title, description, location, date } = req.body;
+    const { title, description, location, date, banner_id } = req.body;
 
     /**
      * Fazendo a validação da data
@@ -65,6 +65,7 @@ class MeetupController {
       description,
       location,
       date,
+      banner_id,
     });
 
     return res.json(meetup);
