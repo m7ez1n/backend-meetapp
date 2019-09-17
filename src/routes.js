@@ -25,6 +25,7 @@ routes.post('/users/avatar', upload.single('file'), FileController.store);
 
 routes.post('/meetup', MeetupController.store);
 routes.put('/meetup/:id', MeetupController.update);
+routes.get('/meetup', MeetupController.index);
 
 routes.post('/meetup/banner', upload.single('banner'), BannerController.store);
 
