@@ -8,18 +8,11 @@ class MeetupController {
     const { page = 1 } = req.query;
 
     const meetapp = await Meetup.findAll({
-      where: { creator_id: req.userId },
+      where: { user_id: req.userId },
       order: ['date'],
       limit: 10,
       offset: (page - 1) * 10,
-      attributes: [
-        'id',
-        'title',
-        'description',
-        'location',
-        'date',
-        'creator_id',
-      ],
+      attributes: ['id', 'title', 'description', 'location', 'date', 'user_id'],
       include: [
         {
           model: Banner,
@@ -60,7 +53,7 @@ class MeetupController {
     }
 
     const meetup = await Meetup.create({
-      creator_id: req.userId,
+      user_id: req.userId,
       title,
       description,
       location,
@@ -89,7 +82,7 @@ class MeetupController {
     /**
      * Conferindo se o meetup para editar é do usuário logado
      */
-    if (req.userId !== meetup.creator_id) {
+    if (req.userId !== meetup.user_id) {
       return res.status(400).json({
         error: 'Só criadores podem editar seus meetups',
       });
@@ -107,7 +100,7 @@ class MeetupController {
 
     const {
       id,
-      creator_id,
+      user_id,
       title,
       description,
       location,
@@ -117,7 +110,7 @@ class MeetupController {
 
     return res.json({
       id,
-      creator_id,
+      user_id,
       title,
       description,
       location,
@@ -132,7 +125,7 @@ class MeetupController {
     /**
      * Conferindo se o meetup para editar é do usuário logado
      */
-    if (req.userId !== meetup.creator_id) {
+    if (req.userId !== meetup.user_id) {
       return res.status(400).json({
         error: 'Só criadores podem excluir seus meetups',
       });
