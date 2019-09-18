@@ -25,7 +25,6 @@ class MeetupController {
 
     const meetapp = await Meetup.findAll({
       where: {
-        user_id: req.userId,
         date: {
           [Op.between]: [startOfDay(searchDate), endOfDay(searchDate)],
         },
