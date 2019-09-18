@@ -42,15 +42,15 @@ Para atualizar a senha, o usuário deve também enviar um campo de confirmação
 
 ### Inscrição no meetup :pushpin:
 
-- [ ] O usuário deve poder se inscrever em meetups que não organiza.
+- [X] O usuário deve poder se inscrever em meetups que não organiza.
 
-- [ ] O usuário não pode se inscrever em meetups que já aconteceram.
+- [X] O usuário não pode se inscrever em meetups que já aconteceram.
 
-- [ ] O usuário não pode se inscrever no mesmo meetup duas vezes.
+- [X] O usuário não pode se inscrever no mesmo meetup duas vezes.
 
-- [ ] O usuário não pode se inscrever em dois meetups que acontecem no mesmo horário.
+- [X] O usuário não pode se inscrever em dois meetups que acontecem no mesmo horário.
 
-- [ ] Sempre que um usuário se inscrever no meetup, envie um e-mail ao organizador contendo os dados relacionados ao usuário inscrito. O template do e-mail fica por sua conta :)
+- [X] Sempre que um usuário se inscrever no meetup, envie um e-mail ao organizador contendo os dados relacionados ao usuário inscrito. O template do e-mail fica por sua conta :)
 
 ### Listagem de meetups :clipboard:
 
