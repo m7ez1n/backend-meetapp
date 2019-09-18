@@ -54,12 +54,12 @@ Para atualizar a senha, o usuário deve também enviar um campo de confirmação
 
 ### Listagem de meetups :clipboard:
 
-- [ ] Crie uma rota para listar os meetups com filtro por data (não por hora), os resultados dessa listagem devem vir paginados em 10 itens por página. Abaixo tem um exemplo de chamada para a rota de listagem dos meetups:
+- [X] Crie uma rota para listar os meetups com filtro por data (não por hora), os resultados dessa listagem devem vir paginados em 10 itens por página. Abaixo tem um exemplo de chamada para a rota de listagem dos meetups:
 
  ```http://localhost:3333/meetups?date=2019-07-01&page=2``` 
 
 
-- [ ] Nessa listagem retorne também os dados do organizador.
+- [X] Nessa listagem retorne também os dados do organizador.
 
 ### Listagem de inscrições :scroll:
 
