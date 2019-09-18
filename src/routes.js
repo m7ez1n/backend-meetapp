@@ -30,6 +30,7 @@ routes.get('/meetup', MeetupController.index);
 routes.delete('/meetup/:id', MeetupController.destroy);
 
 routes.post('/meetup/subscribe/:meetupId', SubscribeController.store);
+routes.get('/subscriber/meetup', SubscribeController.index);
 
 routes.post('/meetup/banner', upload.single('banner'), BannerController.store);
 
