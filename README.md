@@ -63,9 +63,9 @@ Para atualizar a senha, o usuário deve também enviar um campo de confirmação
 
 ### Listagem de inscrições :scroll:
 
-- [ ] Crie uma rota para listar os meetups em que o usuário logado está inscrito.
+- [X] Crie uma rota para listar os meetups em que o usuário logado está inscrito.
 
-- [ ] Liste apenas meetups que ainda não passaram e ordene meetups mais próximos como primeiros da lista.
+- [X] Liste apenas meetups que ainda não passaram e ordene meetups mais próximos como primeiros da lista.
 
 <h2 align="center">
   Acessem a He4rt :purple_heart:
