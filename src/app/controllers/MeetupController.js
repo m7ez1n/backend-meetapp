@@ -1,14 +1,35 @@
 import * as Yup from 'yup';
-import { isBefore, parseISO, startOfHour } from 'date-fns';
+import {
+  isBefore,
+  parseISO,
+  startOfHour,
+  startOfDay,
+  endOfDay,
+} from 'date-fns';
+import { Op } from 'sequelize';
+
 import Meetup from '../models/Meetup';
 import Banner from '../models/Banner';
+import User from '../models/User';
+import File from '../models/File';
 
 class MeetupController {
   async index(req, res) {
-    const { page = 1 } = req.query;
+    const { page = 1, data } = req.query;
+
+    if (!data) {
+      return res.status(400).json({ error: 'Essa data é inválida' });
+    }
+
+    const searchDate = parseISO(data);
 
     const meetapp = await Meetup.findAll({
-      where: { user_id: req.userId },
+      where: {
+        user_id: req.userId,
+        date: {
+          [Op.between]: [startOfDay(searchDate), endOfDay(searchDate)],
+        },
+      },
       order: ['date'],
       limit: 10,
       offset: (page - 1) * 10,
@@ -18,6 +39,16 @@ class MeetupController {
           model: Banner,
           as: 'banner',
           attributes: ['id', 'path', 'url'],
+        },
+        {
+          model: User,
+          attributes: ['name', 'email'],
+          include: [
+            {
+              model: File,
+              attributes: ['id', 'path', 'url'],
+            },
+          ],
         },
       ],
     });
